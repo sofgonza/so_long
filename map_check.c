@@ -36,6 +36,7 @@ int	save_map(int fd, t_info *info)
 	char	*mapstr;
 
 	line = "";
+	mapstr = NULL;
 	while (line != NULL)
 	{
 		line = get_next_line(fd);
@@ -45,7 +46,9 @@ int	save_map(int fd, t_info *info)
 			break ;
 		}
 		if (line[0] == '\n')
+		{
 			ft_error("Invalid map");
+		}
 		mapstr = gnl_strjoin(mapstr, line);
 		free(line);
 	}
