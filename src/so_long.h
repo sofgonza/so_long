@@ -17,9 +17,11 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdio.h>
-# include "./libft/libft.h"
-# include "./printf/ft_printf.h"
-# include "./get_next_line/get_next_line.h"
+# include <limits.h>
+# include <mlx.h>
+# include "../libft/libft.h"
+# include "../printf/ft_printf.h"
+# include "../get_next_line/get_next_line.h"
 
 typedef struct s_player
 {
@@ -34,11 +36,18 @@ typedef struct s_exit
 	int	y;
 }	t_exit;
 
+typedef struct s_map
+{
+	char	**map;
+	int		map_h;
+	int		map_l;
+}	t_map;
+
 typedef struct s_info
 {
 	t_player	pinfo;
 	t_exit		einfo;
-	char		**map;
+	t_map		minfo;
 	int			player;
 	int			coins;
 	int			exit;
@@ -70,6 +79,12 @@ void	str_free(char **str);
 void	init_vars(t_info *info);
 void	ft_error(char *str);
 
-void	print_map(char **map);
+// MAP PRINT
+// inicializar mlx y abrir ventana + loop
+// print_map(t_info	*info) --> recorrrer el mapa y enviar cada posición a put_img
+// put_img --> mlx_xpm_file_to_image() && mls_put_image_to_window()
+int	init_mlx(void);
+
+void	test_print_map(char **map);
 
 #endif

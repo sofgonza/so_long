@@ -39,12 +39,12 @@ int	map_chars(t_info *info)
 	int	i;
 
 	j = 0;
-	while (info->map[j])
+	while (info->minfo.map[j])
 	{
 		i = 0;
-		while (info->map[j][i])
+		while (info->minfo.map[j][i])
 		{
-			check_chars(info->map[j][i], info);
+			check_chars(info->minfo.map[j][i], info);
 			++i;
 		}
 		++j;

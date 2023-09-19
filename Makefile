@@ -15,22 +15,37 @@ NAME = so_long
 RM = rm -f
 
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra -g3 -fsanitize=address
-
-GNL = get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
-GNLOBJS = $(GNL:.c=.o)
-SRC = main.c map_check.c map_check_utils.c utils.c parce.c parce_utils.c
-OBJS = $(SRC:.c=.o)
+CFLAGS = -Wall -Werror -Wextra 
+DEBUG = -g3 -fsanitize=address
+MLX_FLAGS = -framework OpenGL -framework AppKit
 
 LIBFT = ./libft/libft.a
 PRINTF = ./printf/libftprintf.a
+MLX = ./mlx/libmlx.a
+LIB = ./src/so_long.h
+SRC_PATH = ./src/
 
-all: $(NAME)
+GNL = get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
+GNLOBJS = $(GNL:.c=.o)
+
+SRC = main.c map_check.c map_check_utils.c utils.c parce.c parce_utils.c
+
+SRCS = $(addprefix $(SRC_PATH), $(SRC))
+OBJS = $(SRCS:.c=.o)
+
+all: make_libft make_printf make_mlx $(NAME)
+
+make_libft:
+	@make all -C ./libft
+
+make_printf:
+	@make all -C ./printf
+
+make_mlx:
+	@make all -C ./mlx
 
 $(NAME): $(OBJS) $(GNLOBJS)
-	make -C ./libft
-	make -C ./printf
-	$(CC) $(CFLAGS) $(GNLOBJS) $(OBJS) -o $(NAME) $(LIBFT) $(PRINTF)
+	$(CC) $(CFLAGS) $(GNLOBJS) $(OBJS) -I $(LIB) $(LIBFT) $(MLX) $(MLX_FLAGS) -o $(NAME) $(LIBFT) $(PRINTF)
 
 clean:
 	$(RM) $(OBJS) $(GNLOBJS)
@@ -42,6 +57,6 @@ fclean: clean
 	make fclean -C ./libft
 	make fclean -C ./printf
 
-re: clean all
+re: fclean all
 
 .PHONY: all clean fclean re

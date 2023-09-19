@@ -23,6 +23,7 @@ int	main(int argc, char *argv[])
 			return (0);
 		init_vars(info);
 		check_map(argv[1], info);
+		init_mlx();
 		free(info);
 	}
 	else
@@ -30,5 +31,16 @@ int	main(int argc, char *argv[])
 		ft_printf("invalid map file");
 		exit(1);
 	}
+	return (0);
+}
+
+int init_mlx(void)
+{
+	void	*mlx;
+	void	*mlx_wim;
+
+	mlx = mlx_init();
+	mlx_wim = mlx_new_window(mlx, 1080, 1080, "so_long");
+	mlx_loop(mlx);
 	return (0);
 }

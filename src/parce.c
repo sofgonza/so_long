@@ -19,15 +19,15 @@ char	**map_cpy(t_info *info)
 	char	**map_copy;
 	
 	j = 0;
-	while(info->map[j])
+	while(info->minfo.map[j])
 		++j;
 	map_copy = malloc (sizeof(char **) * (j + 1));
 	if (!map_copy)
 		return (NULL);
 	j = 0;
-	while(info->map[j])
+	while(info->minfo.map[j])
 	{
-		map_copy[j] = info->map[j];			
+		map_copy[j] = info->minfo.map[j];			
 		++j;
 	}
 	map_copy[j] = 0;
@@ -37,7 +37,7 @@ char	**map_cpy(t_info *info)
 // reemplazar '0' y 'C' por ' '
 char **chech_path(char **map, int y, int x)
 {
-	print_map(map);
+	test_print_map(map);
 	map[y][x] = ' ';
 	if (map[y - 1][x] != '1' && map[y - 1][x] != 'E' 
 		&& map[y - 1][x] != ' ')

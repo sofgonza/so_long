@@ -54,31 +54,31 @@ int	save_map(int fd, t_info *info)
 	}
 	if (!mapstr)
 		ft_error("empty file");
-	info->map = ft_split(mapstr, '\n');
+	info->minfo.map = ft_split(mapstr, '\n');
 	free(mapstr);
 	return (0);
 }
 
 int	rec_map(t_info *info)
 {
-	int	len;
 	int	len2;
 	int	i;
 
 	i = 1;
-	len = ft_strlen(info->map[0]);
+	info->minfo.map_l = ft_strlen(info->minfo.map[0]);
 	len2 = 0;
-	while (info->map[i])
+	while (info->minfo.map[i])
 	{
-		len2 = ft_strlen(info->map[i]);
-		if (len != len2)
+		len2 = ft_strlen(info->minfo.map[i]);
+		if (info->minfo.map_l != len2)
 		{
 			ft_error("insert a rectangular map");
 			return (0);
 		}
-		len = len2;
+		info->minfo.map_l = len2;
 		++i;
 	}
+	info->minfo.map_h = i - 1;
 	return (0);
 }
 
@@ -88,18 +88,18 @@ int	close_map(t_info *info)
 	int	i;
 	int	j;
 
-	len = (ft_strlen(info->map[0])) - 1;
+	len = (ft_strlen(info->minfo.map[0])) - 1;
 	j = 0;
-	while (info->map[j])
+	while (info->minfo.map[j])
 	{
 		i = 0;
-		while (i <= len && (j == 0 || !(info->map[j + 1])))
+		while (i <= len && (j == 0 || !(info->minfo.map[j + 1])))
 		{
-			if (info->map[j][i] != '1')
+			if (info->minfo.map[j][i] != '1')
 				ft_error("map not closed by top/down walls\n");
 			++i;
 		}
-		if (info->map[j][0] != '1' || info->map[j][len] != '1')
+		if (info->minfo.map[j][0] != '1' || info->minfo.map[j][len] != '1')
 			ft_error("map not closed by lateral walls\n");
 		++j;
 	}

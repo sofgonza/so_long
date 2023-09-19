@@ -14,7 +14,7 @@
 
 void	init_vars(t_info *info)
 {
-	info->map = NULL;
+	info->minfo.map = NULL;
 	info->player = 0;
 	info->coins = 0;
 	info->exit = 0;
@@ -28,7 +28,7 @@ void	ft_error(char *str)
 	exit (0);
 }
 
-void	print_map(char **map)
+void	test_print_map(char **map)
 {
 	int	i;
 	
