@@ -28,7 +28,13 @@ SRC_PATH = ./src/
 GNL = get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
 GNLOBJS = $(GNL:.c=.o)
 
-SRC = main.c map_check.c map_check_utils.c utils.c parce.c parce_utils.c
+SRC = so_long.c \
+		map_check.c \
+		map_check_utils.c \
+		utils.c \
+		parce.c \
+		parce_utils.c \
+		print_map.c
 
 SRCS = $(addprefix $(SRC_PATH), $(SRC))
 OBJS = $(SRCS:.c=.o)

@@ -41,6 +41,7 @@ typedef struct s_map
 	char	**map;
 	int		map_h;
 	int		map_l;
+	void	*desk;
 }	t_map;
 
 typedef struct s_info
@@ -48,6 +49,10 @@ typedef struct s_info
 	t_player	pinfo;
 	t_exit		einfo;
 	t_map		minfo;
+	void		*mlx;
+	void		*mlx_win;
+	int			img_width;
+	int			img_height;
 	int			player;
 	int			coins;
 	int			exit;
@@ -83,8 +88,13 @@ void	ft_error(char *str);
 // inicializar mlx y abrir ventana + loop
 // print_map(t_info	*info) --> recorrrer el mapa y enviar cada posición a put_img
 // put_img --> mlx_xpm_file_to_image() && mls_put_image_to_window()
-int	init_mlx(void);
+int	init_mlx(t_info *info);
 
 void	test_print_map(char **map);
+void	*init_xpm(t_info *info, char *str);
+
+void	put_img(t_info *info, void *img_ptr, int j, int i);
+void	print_map(t_info *info);
+
 
 #endif

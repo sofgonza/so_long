@@ -23,7 +23,8 @@ int	main(int argc, char *argv[])
 			return (0);
 		init_vars(info);
 		check_map(argv[1], info);
-		init_mlx();
+		init_mlx(info);
+		//print_map(info);
 		free(info);
 	}
 	else
@@ -34,13 +35,3 @@ int	main(int argc, char *argv[])
 	return (0);
 }
 
-int init_mlx(void)
-{
-	void	*mlx;
-	void	*mlx_wim;
-
-	mlx = mlx_init();
-	mlx_wim = mlx_new_window(mlx, 1080, 1080, "so_long");
-	mlx_loop(mlx);
-	return (0);
-}
