@@ -14,41 +14,21 @@
 
 int init_mlx(t_info *info)
 {
-	int	x;
-	int	y;
-
 	info->mlx = mlx_init();
 	info->mlx_win = mlx_new_window(info->mlx, 1080, 1080, "so_long");
-	x = 0;
-	y = 0;
-	while (x <= 1080)
-	{
-		mlx_pixel_put(info->mlx, info->mlx_win, x, y, 0xffffff);
-		++x;
-		y += 10;
-	}
-	// info->minfo.desk = init_xpm(info, "desktop.xpm");
-	// print_map(info);
+	save_xpm(info);
+	print_map(info);
 	mlx_loop(info->mlx);
     return (0);
 }
 
-void	print_map(t_info *info)
+void	save_xpm(t_info *info)
 {
-	int	i;
-    int j;
-	
-	i = 0;
-	while (info->minfo.map[i])
-	{
-        j = 0;
-        while (info->minfo.map[i][j])
-        {
-            put_img(info, info->minfo.desk, (i * 70), (j * 100));
-            ++j;
-        }
-		++i;
-	}
+	info->minfo.walls = init_xpm(info, "desktop.xpm");
+	info->minfo.ground = init_xpm(info, "stapler.xpm");
+	info->minfo.exit = init_xpm(info, "stapler.xpm");
+	info->minfo.coins = init_xpm(info, "paper.xpm");
+	info->minfo.player = init_xpm(info, "dwight.xpm");
 }
 
 void	*init_xpm(t_info *info, char *str)
@@ -64,8 +44,40 @@ void	*init_xpm(t_info *info, char *str)
 	return (img);
 }
 
-//mlx_put_image_to_window
+void	print_map(t_info *info)
+{
+	int	i;
+    int j;
+	
+	i = 0;
+	while (info->minfo.map[i])
+	{
+        j = 0;
+        while (info->minfo.map[i][j])
+        {
+            put_elem(info, i, j);
+            ++j;
+        }
+		++i;
+	}
+}
+
+void	put_elem(t_info *info, int i, int j)
+{
+	put_img(info, info->minfo.ground, j, i);
+	if (info->minfo.map[i][j] == '1')
+	{
+		put_img(info, info->minfo.walls, j, i);
+	}
+	else if (info->minfo.map[i][j] == 'E' && info->coins != 0)
+		put_img(info, info->minfo.exit, j, i);
+	else if (info->minfo.map[i][j] == 'C')
+		put_img(info, info->minfo.coins, j, i);
+	else
+		put_img(info, info->minfo.ground, j, i);
+}
+
 void	put_img(t_info *info, void *img_ptr, int j, int i)
 {
-	mlx_put_image_to_window(info->mlx, info->mlx_win, img_ptr, j, i);
+	mlx_put_image_to_window(info->mlx, info->mlx_win, img_ptr, j * 110, i * 110);
 }

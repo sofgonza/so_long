@@ -23,6 +23,7 @@ int	main(int argc, char *argv[])
 			return (0);
 		init_vars(info);
 		check_map(argv[1], info);
+		test_print_map(info->minfo.map);
 		init_mlx(info);
 		//print_map(info);
 		free(info);
@@ -34,4 +35,3 @@ int	main(int argc, char *argv[])
 	}
 	return (0);
 }
-

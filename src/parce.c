@@ -13,31 +13,40 @@
 #include "so_long.h"
 
 // copiar mapa
-char	**map_cpy(t_info *info)
+/*char	**map_cpy(t_info *info)
 {
 	int		j;
+	int		i;
 	char	**map_copy;
 	
 	j = 0;
+	test_print_map(info->minfo.map);
 	while(info->minfo.map[j])
 		++j;
 	map_copy = malloc (sizeof(char **) * (j + 1));
 	if (!map_copy)
 		return (NULL);
 	j = 0;
-	while(info->minfo.map[j])
+	i = 0;
+	while(info->minfo.map[j] != '\0')
 	{
-		map_copy[j] = info->minfo.map[j];			
+		i = 0;
+		while(info->minfo.map[j][i] != '\0')
+		{
+			map_copy[j][i] = info->minfo.map[j][i];
+			++i;
+		}
 		++j;
 	}
-	map_copy[j] = 0;
+	map_copy[j] = "\0";
+	test_print_map(info->minfo.map);
 	return (map_copy);
-}
+}*/
 
 // reemplazar '0' y 'C' por ' '
 char **chech_path(char **map, int y, int x)
 {
-	test_print_map(map);
+	//test_print_map(map);
 	map[y][x] = ' ';
 	if (map[y - 1][x] != '1' && map[y - 1][x] != 'E' 
 		&& map[y - 1][x] != ' ')
@@ -51,6 +60,7 @@ char **chech_path(char **map, int y, int x)
 	if (map[y][x + 1] != '1' && map[y][x + 1] != 'E'
 		&& map[y][x + 1] != ' ')
 		chech_path(map, y, (x + 1));
+	//test_print_map(map);
 	return (map);
 }
 
@@ -86,22 +96,19 @@ int	exit_path(char **map, int y, int x)
 
 int	map_parce(t_info *info)
 {
-	char	**map_copy;
-
-	map_copy = map_cpy(info);
-	find_player(info, map_copy);
-	map_copy = chech_path(map_copy, info->pinfo.y, info->pinfo.x);
-	if (!valid_path(map_copy))
+	find_player(info, info->minfo.map_cpy);
+	info->minfo.map_cpy = chech_path(info->minfo.map_cpy, info->pinfo.y, info->pinfo.x);
+	if (!valid_path(info->minfo.map_cpy))
 	{
-		str_free(map_copy);
+		str_free(info->minfo.map_cpy);
 		ft_error("invalid path\n");
 	}
-	find_exit(info, map_copy);
-	if (!exit_path(map_copy, info->einfo.y, info->einfo.x))
+	find_exit(info, info->minfo.map_cpy);
+	if (!exit_path(info->minfo.map_cpy, info->einfo.y, info->einfo.x))
 	{
-		str_free(map_copy);
+		str_free(info->minfo.map_cpy);
 		ft_error("invalid path\n");
 	}
-	str_free(map_copy);
+	str_free(info->minfo.map_cpy);
 	return (0);
 }

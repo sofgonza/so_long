@@ -39,9 +39,14 @@ typedef struct s_exit
 typedef struct s_map
 {
 	char	**map;
-	int		map_h;
+	char	**map_cpy;
 	int		map_l;
-	void	*desk;
+	int		map_h;
+	void	*walls;
+	void	*ground;
+	void	*exit;
+	void	*coins;
+	void	*player;
 }	t_map;
 
 typedef struct s_info
@@ -92,7 +97,8 @@ int	init_mlx(t_info *info);
 
 void	test_print_map(char **map);
 void	*init_xpm(t_info *info, char *str);
-
+void	save_xpm(t_info *info);
+void	put_elem(t_info *info, int j,int i);
 void	put_img(t_info *info, void *img_ptr, int j, int i);
 void	print_map(t_info *info);
 

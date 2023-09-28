@@ -31,12 +31,19 @@ void	ft_error(char *str)
 void	test_print_map(char **map)
 {
 	int	i;
-	
+	int	j;
+
 	i = 0;
 	while (map[i])
 	{
-		ft_printf("%s\n", map[i]);
+		j = 0;
+		while(map[i][j])
+		{
+			ft_printf("%c", map[i][j]);
+			++j;
+		}
+		ft_printf("\n");
 		++i;
 	}
-	ft_printf("\n");
+	ft_printf("fin mapa\n");
 }

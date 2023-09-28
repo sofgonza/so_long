@@ -55,6 +55,7 @@ int	save_map(int fd, t_info *info)
 	if (!mapstr)
 		ft_error("empty file");
 	info->minfo.map = ft_split(mapstr, '\n');
+	info->minfo.map_cpy = ft_split(mapstr, '\n');
 	free(mapstr);
 	return (0);
 }
