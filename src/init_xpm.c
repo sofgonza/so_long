@@ -26,7 +26,7 @@ int init_mlx(t_info *info)
 
 void	save_xpm(t_info *info)
 {
-	info->minfo.walls = init_xpm(info, "desktop.xpm");
+	info->minfo.walls = init_xpm(info, "desktopb.xpm");
 	info->minfo.ground = init_xpm(info, "floor.xpm");
 	info->minfo.exit = init_xpm(info, "stapler.xpm");
 	info->minfo.coins = init_xpm(info, "paper.xpm");
