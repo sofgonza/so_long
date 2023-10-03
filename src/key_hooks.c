@@ -50,7 +50,6 @@ void    w_press(t_info *info)
 
 void    s_press(t_info *info)
 {
-	test_print_map(info->minfo.map);
     if ((info->minfo.map[info->pinfo.y + 1][info->pinfo.x]) == 'C')
         info->coins++;
     if ((info->minfo.map[info->pinfo.y + 1][info->pinfo.x]) == 'E' 
@@ -69,7 +68,6 @@ void    s_press(t_info *info)
 
 void    a_press(t_info *info)
 {
-	test_print_map(info->minfo.map);
     if ((info->minfo.map[info->pinfo.y][info->pinfo.x - 1]) == 'C')
         info->coins++;
     if ((info->minfo.map[info->pinfo.y][info->pinfo.x - 1]) == 'E'
@@ -88,7 +86,6 @@ void    a_press(t_info *info)
 
 void    d_press(t_info *info)
 {
-	test_print_map(info->minfo.map);
     if ((info->minfo.map[info->pinfo.y][info->pinfo.x + 1]) == 'C')
         info->coins++;
     if ((info->minfo.map[info->pinfo.y][info->pinfo.x + 1]) == 'E'
