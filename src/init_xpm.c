@@ -18,6 +18,7 @@ int init_mlx(t_info *info)
 	info->mlx_win = mlx_new_window(info->mlx, (info->minfo.map_l * PXL_SIZE), ((info->minfo.map_h + 1) * PXL_SIZE), "so_long");
 	mlx_hook(info->mlx_win, 17, 0, red_cross, info);
 	save_xpm(info);
+	print_map(info, 'w');
 	mlx_key_hook(info->mlx_win, key_hooks, info);
 	//mlx_loop_hook(info->mlx, &loop_hook, &info);
 	mlx_loop(info->mlx);

@@ -39,7 +39,9 @@ void	put_elem(t_info *info, int i, int j)
 	{
 		put_img(info, info->minfo.walls, j, i);
 	}
-	else if (info->minfo.map[i][j] == 'E' && info->coins != 0)
+	else if (info->minfo.map[i][j] == 'E' && info->coins != info->allcoins)
+		put_img(info, info->minfo.exit, j, i);
+	else if (info->minfo.map[i][j] == 'E' && info->coins == info->allcoins)
 		put_img(info, info->minfo.exit, j, i);
 	else if (info->minfo.map[i][j] == 'C')
 		put_img(info, info->minfo.coins, j, i);	
