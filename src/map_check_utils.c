@@ -56,7 +56,7 @@ int	map_chars(t_info *info)
 int	check_chars(char c, t_info *info)
 {
 	if (c == 'C')
-		info->coins++;
+		info->allcoins++;
 	else if (c == 'P')
 		info->player++;
 	else if (c == 'E')
@@ -72,7 +72,7 @@ int	check_chars(char c, t_info *info)
 
 int	count_chars(t_info *info)
 {
-	if (info->coins < 1)
+	if (info->allcoins < 1)
 		ft_error("not enough collectibles\n");
 	else if (info->player != 1)
 		ft_error("start point not given\n");

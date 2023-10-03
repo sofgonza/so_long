@@ -16,7 +16,7 @@ void	init_vars(t_info *info)
 {
 	info->minfo.map = NULL;
 	info->player = 0;
-	info->coins = 0;
+	info->allcoins = 0;
 	info->exit = 0;
 	info->walls = 0;
 	info->ground = 0;
@@ -45,5 +45,4 @@ void	test_print_map(char **map)
 		ft_printf("\n");
 		++i;
 	}
-	ft_printf("fin mapa\n");
 }

@@ -23,11 +23,23 @@
 # include "../printf/ft_printf.h"
 # include "../get_next_line/get_next_line.h"
 
+# define ESC_KEY		53
+# define W_KEY			13
+# define A_KEY			0
+# define S_KEY			1
+# define D_KEY			2
+# define ARROW_UP		126
+# define ARROW_DOWN		125
+# define ARROW_LEFT		123
+# define ARROW_RIGHT	124
+# define PXL_SIZE		96
+
 typedef struct s_player
 {
 	int	x;
 	int	y;
 	int	mov;
+	int	steps_flag;
 }	t_player;
 
 typedef struct s_exit
@@ -46,7 +58,10 @@ typedef struct s_map
 	void	*ground;
 	void	*exit;
 	void	*coins;
-	void	*player;
+	void	*playerw;
+	void	*playera;
+	void	*players;
+	void	*playerd;
 }	t_map;
 
 typedef struct s_info
@@ -59,6 +74,7 @@ typedef struct s_info
 	int			img_width;
 	int			img_height;
 	int			player;
+	int			allcoins;
 	int			coins;
 	int			exit;
 	int			walls;
@@ -93,14 +109,19 @@ void	ft_error(char *str);
 // inicializar mlx y abrir ventana + loop
 // print_map(t_info	*info) --> recorrrer el mapa y enviar cada posición a put_img
 // put_img --> mlx_xpm_file_to_image() && mls_put_image_to_window()
-int	init_mlx(t_info *info);
-
 void	test_print_map(char **map);
+int		init_mlx(t_info *info);
 void	*init_xpm(t_info *info, char *str);
+int		red_cross(t_info *info);
 void	save_xpm(t_info *info);
-void	put_elem(t_info *info, int j,int i);
+void	put_elem(t_info *info, int i, int j);
 void	put_img(t_info *info, void *img_ptr, int j, int i);
-void	print_map(t_info *info);
-
+void	print_map(t_info *info, char key);
+void	put_player(t_info *info, int i, int j, char key);
+int		key_hooks(int key_code, t_info *info);
+void    w_press(t_info *info);
+void    a_press(t_info *info);
+void    s_press(t_info *info);
+void    d_press(t_info *info);
 
 #endif

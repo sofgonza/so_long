@@ -34,7 +34,9 @@ SRC = so_long.c \
 		utils.c \
 		parce.c \
 		parce_utils.c \
-		print_map.c
+		print_map.c \
+		init_xpm.c \
+		key_hooks.c
 
 SRCS = $(addprefix $(SRC_PATH), $(SRC))
 OBJS = $(SRCS:.c=.o)
@@ -51,7 +53,7 @@ make_mlx:
 	@make all -C ./mlx
 
 $(NAME): $(OBJS) $(GNLOBJS)
-	$(CC) $(CFLAGS) $(GNLOBJS) $(OBJS) -I $(LIB) $(LIBFT) $(MLX) $(MLX_FLAGS) -o $(NAME) $(LIBFT) $(PRINTF)
+	$(CC) $(CFLAGS) $(DEBUG) $(GNLOBJS) $(OBJS) -I $(LIB) $(LIBFT) $(MLX) $(MLX_FLAGS) -o $(NAME) $(LIBFT) $(PRINTF)
 
 clean:
 	$(RM) $(OBJS) $(GNLOBJS)

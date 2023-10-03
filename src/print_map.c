@@ -12,39 +12,7 @@
 
 #include "so_long.h"
 
-int init_mlx(t_info *info)
-{
-	info->mlx = mlx_init();
-	info->mlx_win = mlx_new_window(info->mlx, 1080, 1080, "so_long");
-	save_xpm(info);
-	print_map(info);
-	mlx_loop(info->mlx);
-    return (0);
-}
-
-void	save_xpm(t_info *info)
-{
-	info->minfo.walls = init_xpm(info, "desktop.xpm");
-	info->minfo.ground = init_xpm(info, "stapler.xpm");
-	info->minfo.exit = init_xpm(info, "stapler.xpm");
-	info->minfo.coins = init_xpm(info, "paper.xpm");
-	info->minfo.player = init_xpm(info, "dwight.xpm");
-}
-
-void	*init_xpm(t_info *info, char *str)
-{
-	char	*route;
-	void	*img;
-
-	route = ft_strjoin("./xpm/", str);
-	img = mlx_xpm_file_to_image(info->mlx, route, &info->img_width, &info->img_height);
-	if (!img)
-		ft_error("Failed to load XPM files");
-	free(route);
-	return (img);
-}
-
-void	print_map(t_info *info)
+void	print_map(t_info *info, char key)
 {
 	int	i;
     int j;
@@ -56,6 +24,8 @@ void	print_map(t_info *info)
         while (info->minfo.map[i][j])
         {
             put_elem(info, i, j);
+			if (info->minfo.map[i][j] == 'P')
+				put_player(info, i, j, key);
             ++j;
         }
 		++i;
@@ -72,12 +42,24 @@ void	put_elem(t_info *info, int i, int j)
 	else if (info->minfo.map[i][j] == 'E' && info->coins != 0)
 		put_img(info, info->minfo.exit, j, i);
 	else if (info->minfo.map[i][j] == 'C')
-		put_img(info, info->minfo.coins, j, i);
+		put_img(info, info->minfo.coins, j, i);	
 	else
-		put_img(info, info->minfo.ground, j, i);
+		put_img(info, info->minfo.ground, j, i);		
+}
+
+void	put_player(t_info *info, int i, int j, char key)
+{
+	if (key == 'w')
+		put_img(info, info->minfo.playerw, j, i);
+	else if(key == 'a')
+		put_img(info, info->minfo.playera, j, i);
+	else if (key == 's')
+		put_img(info, info->minfo.players, j, i);
+	else if (key == 'd')
+		put_img(info, info->minfo.playerd, j, i);
 }
 
 void	put_img(t_info *info, void *img_ptr, int j, int i)
 {
-	mlx_put_image_to_window(info->mlx, info->mlx_win, img_ptr, j * 110, i * 110);
+	mlx_put_image_to_window(info->mlx, info->mlx_win, img_ptr, j * PXL_SIZE, i * PXL_SIZE);
 }
