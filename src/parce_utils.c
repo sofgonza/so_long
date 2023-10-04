@@ -27,32 +27,32 @@ void	str_free(char **str)
 }
 
 // ubicar posición jugador
-void find_player(t_info *info, char **map)
+void	find_player(t_solong *info, char **map)
 {
 	info->pinfo.y = 0;
-	while(map[info->pinfo.y])
+	while (map[info->pinfo.y])
 	{
 		info->pinfo.x = 0;
-		while(map[info->pinfo.y][info->pinfo.x] != '\0' 
+		while (map[info->pinfo.y][info->pinfo.x] != '\0'
 			&& map[info->pinfo.y][info->pinfo.x] != 'P' )
 			info->pinfo.x++;
-		if(map[info->pinfo.y][info->pinfo.x] == 'P')
+		if (map[info->pinfo.y][info->pinfo.x] == 'P')
 			return ;
 		info->pinfo.y++;
 	}
 }
 
 // ubicar posición slaida
-void find_exit(t_info *info, char **map)
+void	find_exit(t_solong *info, char **map)
 {
 	info->einfo.y = 0;
-	while(map[info->einfo.y])
+	while (map[info->einfo.y])
 	{
 		info->einfo.x = 0;
-		while(map[info->einfo.y][info->einfo.x] != '\0' 
+		while (map[info->einfo.y][info->einfo.x] != '\0'
 			&& map[info->einfo.y][info->einfo.x] != 'E' )
 			info->einfo.x++;
-		if(map[info->einfo.y][info->einfo.x] == 'E')
+		if (map[info->einfo.y][info->einfo.x] == 'E')
 			return ;
 		info->einfo.y++;
 	}

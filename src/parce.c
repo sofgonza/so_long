@@ -13,10 +13,10 @@
 #include "so_long.h"
 
 // reemplazar '0' y 'C' por ' '
-char **chech_path(char **map, int y, int x)
+char	**chech_path(char **map, int y, int x)
 {
 	map[y][x] = ' ';
-	if (map[y - 1][x] != '1' && map[y - 1][x] != 'E' 
+	if (map[y - 1][x] != '1' && map[y - 1][x] != 'E'
 		&& map[y - 1][x] != ' ')
 		chech_path(map, (y - 1), x);
 	if (map[y + 1][x] != '1' && map[y + 1][x] != 'E'
@@ -38,10 +38,10 @@ int	valid_path(char **map)
 	int	x;
 
 	y = 0;
-	while(map[y])
+	while (map[y])
 	{
 		x = 0;
-		while(map[y][x])
+		while (map[y][x])
 		{
 			if (map[y][x] == 'C')
 				return (0);
@@ -55,16 +55,17 @@ int	valid_path(char **map)
 // checkear en puntos cardinales al rededor de 'E' q alguno es ' '
 int	exit_path(char **map, int y, int x)
 {
-	if (map[y - 1][x] == ' ' || map[y + 1][x] == ' ' 
+	if (map[y - 1][x] == ' ' || map[y + 1][x] == ' '
 		|| map[y][x - 1] == ' ' || map[y][x + 1] == ' ')
 		return (1);
 	return (0);
 }
 
-int	map_parce(t_info *info)
+int	map_parce(t_solong *info)
 {
 	find_player(info, info->minfo.map_cpy);
-	info->minfo.map_cpy = chech_path(info->minfo.map_cpy, info->pinfo.y, info->pinfo.x);
+	info->minfo.map_cpy = chech_path(info->minfo.map_cpy,
+			info->pinfo.y, info->pinfo.x);
 	if (!valid_path(info->minfo.map_cpy))
 	{
 		str_free(info->minfo.map_cpy);

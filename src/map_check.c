@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-int	check_map(char *file, t_info *info)
+int	check_map(char *file, t_solong *info)
 {
 	int	fd;
 
@@ -27,11 +27,10 @@ int	check_map(char *file, t_info *info)
 	close_map(info);
 	map_chars(info);
 	map_parce(info);
-	//test_print_map(info->minfo.map);
 	return (0);
 }
 
-int	save_map(int fd, t_info *info)
+int	save_map(int fd, t_solong *info)
 {
 	char	*line;
 	char	*mapstr;
@@ -59,7 +58,7 @@ int	save_map(int fd, t_info *info)
 	return (0);
 }
 
-int	rec_map(t_info *info)
+int	rec_map(t_solong *info)
 {
 	int	len2;
 	int	i;
@@ -82,7 +81,7 @@ int	rec_map(t_info *info)
 	return (0);
 }
 
-int	close_map(t_info *info)
+int	close_map(t_solong *info)
 {
 	int	len;
 	int	i;

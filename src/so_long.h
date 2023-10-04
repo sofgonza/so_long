@@ -40,7 +40,6 @@ typedef struct s_player
 	int	x;
 	int	y;
 	int	mov;
-	int	steps_flag;
 }	t_player;
 
 typedef struct s_exit
@@ -55,6 +54,14 @@ typedef struct s_map
 	char	**map_cpy;
 	int		map_l;
 	int		map_h;
+}	t_map;
+
+typedef struct s_mlx
+{
+	void	*mlx;
+	void	*win;
+	int		img_width;
+	int		img_height;
 	void	*walls;
 	void	*ground;
 	void	*exit;
@@ -64,67 +71,63 @@ typedef struct s_map
 	void	*playera;
 	void	*players;
 	void	*playerd;
-}	t_map;
+}	t_mlx;
 
-typedef struct s_info
+typedef struct s_solong
 {
 	t_player	pinfo;
 	t_exit		einfo;
 	t_map		minfo;
-	void		*mlx;
-	void		*mlx_win;
-	int			img_width;
-	int			img_height;
+	t_mlx		mlxinfo;
 	int			player;
-	int			allcoins;
 	int			coins;
 	int			exit;
 	int			walls;
 	int			ground;
-}	t_info;
+}	t_solong;
 
 // MAP CHECK
 int		check_ber(char	*argv);
-int		check_map(char *file, t_info *info);
-int		save_map(int fd, t_info *info);
-int		rec_map(t_info *info);
-int		close_map(t_info *info);
-int		map_chars(t_info *info);
-int		check_chars(char c, t_info *info);
-int		count_chars(t_info *info);
+int		check_map(char *file, t_solong *info);
+int		save_map(int fd, t_solong *info);
+int		rec_map(t_solong *info);
+int		close_map(t_solong *info);
+int		map_chars(t_solong *info);
+int		check_chars(char c, t_solong *info);
+int		count_chars(t_solong *info);
 
 // MAP PARCE
-int		map_parce(t_info *info);
-char	**map_cpy(t_info *info);
-char 	**chech_path(char **map, int y, int x);
+int		map_parce(t_solong *info);
+char	**map_cpy(t_solong *info);
+char	**chech_path(char **map, int y, int x);
 int		valid_path(char **map);
 int		exit_path(char **map, int y, int x);
-void 	find_player(t_info *info, char **map);
-void	find_exit(t_info *info, char **map);
+void	find_player(t_solong *info, char **map);
+void	find_exit(t_solong *info, char **map);
 void	str_free(char **str);
 
 // UTILS
-void	init_vars(t_info *info);
+void	init_vars(t_solong *info);
 void	ft_error(char *str);
 // void	test_print_map(char **map);
 
 // INICIALIZAR XPM
-int		init_mlx(t_info *info);
-void	*init_xpm(t_info *info, char *str);
-void	save_xpm(t_info *info);
-int		red_cross(t_info *info);
+int		init_mlx(t_solong *info);
+void	*init_xpm(t_solong *info, char *str);
+void	save_xpm(t_solong *info);
+int		red_cross(t_solong *info);
 
 // MAP PRINT
-void	print_map(t_info *info, char key);
-void	put_elem(t_info *info, int i, int j);
-void	put_player(t_info *info, int i, int j, char key);
-void	put_img(t_info *info, void *img_ptr, int j, int i);
+void	print_map(t_solong *info, char key);
+void	put_elem(t_solong *info, int i, int j);
+void	put_player(t_solong *info, int i, int j, char key);
+void	put_img(t_solong *info, void *img_ptr, int j, int i);
 
 // KEY HOOKS
-int		key_hooks(int key_code, t_info *info);
-void    w_press(t_info *info);
-void    a_press(t_info *info);
-void    s_press(t_info *info);
-void    d_press(t_info *info);
+int		key_hooks(int key_code, t_solong *info);
+void	w_press(t_solong *info);
+void	a_press(t_solong *info);
+void	s_press(t_solong *info);
+void	d_press(t_solong *info);
 
 #endif

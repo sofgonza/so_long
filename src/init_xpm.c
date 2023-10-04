@@ -12,46 +12,49 @@
 
 #include "so_long.h"
 
-int init_mlx(t_info *info)
+int	init_mlx(t_solong *info)
 {
-	info->mlx = mlx_init();
-	info->mlx_win = mlx_new_window(info->mlx, (info->minfo.map_l * PXL_SIZE), ((info->minfo.map_h + 1) * PXL_SIZE), "so_long");
-	mlx_hook(info->mlx_win, 17, 0, red_cross, info);
+	info->mlxinfo.mlx = mlx_init();
+	info->mlxinfo.win = mlx_new_window(info->mlxinfo.mlx,
+			(info->minfo.map_l * PXL_SIZE),
+			((info->minfo.map_h + 1) * PXL_SIZE), "t_solong");
+	mlx_hook(info->mlxinfo.win, 17, 0, red_cross, info);
 	save_xpm(info);
 	print_map(info, 'w');
-	mlx_key_hook(info->mlx_win, key_hooks, info);
-	mlx_loop(info->mlx);
-    return (0);
+	mlx_key_hook(info->mlxinfo.win, key_hooks, info);
+	mlx_loop(info->mlxinfo.mlx);
+	return (0);
 }
 
-void	save_xpm(t_info *info)
+void	save_xpm(t_solong *info)
 {
-	info->minfo.walls = init_xpm(info, "desktopb.xpm");
-	info->minfo.ground = init_xpm(info, "floor.xpm");
-	info->minfo.noexit = init_xpm(info, "stapler.xpm");
-	info->minfo.exit = init_xpm(info, "stapler.xpm");
-	info->minfo.coins = init_xpm(info, "paper.xpm");
-	info->minfo.playerw = init_xpm(info, "dwight.xpm");
-	info->minfo.playera = init_xpm(info, "dwight.xpm");
-	info->minfo.players = init_xpm(info, "dwight.xpm");
-	info->minfo.playerd = init_xpm(info, "dwight.xpm");
+	info->mlxinfo.walls = init_xpm(info, "desktopb.xpm");
+	info->mlxinfo.ground = init_xpm(info, "floor.xpm");
+	info->mlxinfo.noexit = init_xpm(info, "stapler.xpm");
+	info->mlxinfo.exit = init_xpm(info, "stapler.xpm");
+	info->mlxinfo.coins = init_xpm(info, "paper.xpm");
+	info->mlxinfo.playerw = init_xpm(info, "dwight.xpm");
+	info->mlxinfo.playera = init_xpm(info, "dwight.xpm");
+	info->mlxinfo.players = init_xpm(info, "dwight.xpm");
+	info->mlxinfo.playerd = init_xpm(info, "dwight.xpm");
 }
 
-void	*init_xpm(t_info *info, char *str)
+void	*init_xpm(t_solong *info, char *str)
 {
 	char	*route;
 	void	*img;
 
 	route = ft_strjoin(XPM_ROUTE, str);
-	img = mlx_xpm_file_to_image(info->mlx, route, &info->img_width, &info->img_height);
+	img = mlx_xpm_file_to_image(info->mlxinfo.mlx, route,
+			&info->mlxinfo.img_width, &info->mlxinfo.img_height);
 	if (!img)
 		ft_error("Failed to load XPM files");
 	free(route);
 	return (img);
 }
 
-int	red_cross(t_info *info)
+int	red_cross(t_solong *info)
 {
-	mlx_destroy_window(info->mlx, info->mlx_win);
+	mlx_destroy_window(info->mlxinfo.mlx, info->mlxinfo.win);
 	exit (0);
 }

@@ -12,56 +12,57 @@
 
 #include "so_long.h"
 
-void	print_map(t_info *info, char key)
+void	print_map(t_solong *info, char key)
 {
 	int	i;
-    int j;
-	
+	int	j;
+
 	i = 0;
 	while (info->minfo.map[i])
 	{
-        j = 0;
-        while (info->minfo.map[i][j])
-        {
-            put_elem(info, i, j);
+		j = 0;
+		while (info->minfo.map[i][j])
+		{
+			put_elem(info, i, j);
 			if (info->minfo.map[i][j] == 'P')
 				put_player(info, i, j, key);
-            ++j;
-        }
+			++j;
+		}
 		++i;
 	}
 }
 
-void	put_elem(t_info *info, int i, int j)
+void	put_elem(t_solong *info, int i, int j)
 {
-	put_img(info, info->minfo.ground, j, i);
+	put_img(info, info->mlxinfo.ground, j, i);
 	if (info->minfo.map[i][j] == '1')
 	{
-		put_img(info, info->minfo.walls, j, i);
+		put_img(info, info->mlxinfo.walls, j, i);
 	}
-	else if (info->minfo.map[i][j] == 'E' && info->coins != info->allcoins)
-		put_img(info, info->minfo.noexit, j, i);
-	else if (info->minfo.map[i][j] == 'E' && info->coins == info->allcoins)
-		put_img(info, info->minfo.exit, j, i);
+	else if (info->minfo.map[i][j] == 'E' && info->coins != 0)
+		put_img(info, info->mlxinfo.noexit, j, i);
+	else if (info->minfo.map[i][j] == 'E' && info->coins == 0)
+		put_img(info, info->mlxinfo.exit, j, i);
 	else if (info->minfo.map[i][j] == 'C')
-		put_img(info, info->minfo.coins, j, i);	
+		put_img(info, info->mlxinfo.coins, j, i);
 	else
-		put_img(info, info->minfo.ground, j, i);		
+		put_img(info, info->mlxinfo.ground, j, i);
 }
 
-void	put_player(t_info *info, int i, int j, char key)
+void	put_player(t_solong *info, int i, int j, char key)
 {
 	if (key == 'w')
-		put_img(info, info->minfo.playerw, j, i);
-	else if(key == 'a')
-		put_img(info, info->minfo.playera, j, i);
+		put_img(info, info->mlxinfo.playerw, j, i);
+	else if (key == 'a')
+		put_img(info, info->mlxinfo.playera, j, i);
 	else if (key == 's')
-		put_img(info, info->minfo.players, j, i);
+		put_img(info, info->mlxinfo.players, j, i);
 	else if (key == 'd')
-		put_img(info, info->minfo.playerd, j, i);
+		put_img(info, info->mlxinfo.playerd, j, i);
 }
 
-void	put_img(t_info *info, void *img_ptr, int j, int i)
+void	put_img(t_solong *info, void *img_ptr, int j, int i)
 {
-	mlx_put_image_to_window(info->mlx, info->mlx_win, img_ptr, j * PXL_SIZE, i * PXL_SIZE);
+	mlx_put_image_to_window(info->mlxinfo.mlx, info->mlxinfo.win, img_ptr,
+		j * PXL_SIZE, i * PXL_SIZE);
 }

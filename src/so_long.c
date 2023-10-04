@@ -14,11 +14,11 @@
 
 int	main(int argc, char *argv[])
 {
-	t_info	*info;
+	t_solong	*info;
 
 	if (argc == 2 && check_ber(argv[1]))
 	{
-		info = malloc(sizeof(t_info));
+		info = malloc(sizeof(t_solong));
 		if (!info)
 			return (0);
 		init_vars(info);
