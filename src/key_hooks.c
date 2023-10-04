@@ -45,6 +45,7 @@ void    w_press(t_info *info)
 		info->pinfo.mov++;
 		info->pinfo.y--;
 		print_map(info, 'w');
+		ft_printf("%d\n", info->pinfo.mov);
 	}
 }
 
@@ -63,6 +64,7 @@ void    s_press(t_info *info)
 		info->pinfo.mov++;
 		info->pinfo.y++;
 		print_map(info, 's');
+		ft_printf("%d\n", info->pinfo.mov);
 	}
 }
 
@@ -81,6 +83,7 @@ void    a_press(t_info *info)
 		info->pinfo.mov++;
 		info->pinfo.x--;
 		print_map(info, 'a');
+		ft_printf("%d\n", info->pinfo.mov);
 	}
 }
 
@@ -99,5 +102,6 @@ void    d_press(t_info *info)
 		info->pinfo.mov++;
 		info->pinfo.x++;
 		print_map(info, 'd');
+		ft_printf("%d\n", info->pinfo.mov);
 	}
 }

@@ -33,6 +33,7 @@
 # define ARROW_LEFT		123
 # define ARROW_RIGHT	124
 # define PXL_SIZE		96
+# define XPM_ROUTE		"./xpm/"
 
 typedef struct s_player
 {
@@ -57,6 +58,7 @@ typedef struct s_map
 	void	*walls;
 	void	*ground;
 	void	*exit;
+	void	*noexit;
 	void	*coins;
 	void	*playerw;
 	void	*playera;
@@ -104,20 +106,21 @@ void	str_free(char **str);
 // UTILS
 void	init_vars(t_info *info);
 void	ft_error(char *str);
+// void	test_print_map(char **map);
 
-// MAP PRINT
-// inicializar mlx y abrir ventana + loop
-// print_map(t_info	*info) --> recorrrer el mapa y enviar cada posición a put_img
-// put_img --> mlx_xpm_file_to_image() && mls_put_image_to_window()
-void	test_print_map(char **map);
+// INICIALIZAR XPM
 int		init_mlx(t_info *info);
 void	*init_xpm(t_info *info, char *str);
-int		red_cross(t_info *info);
 void	save_xpm(t_info *info);
-void	put_elem(t_info *info, int i, int j);
-void	put_img(t_info *info, void *img_ptr, int j, int i);
+int		red_cross(t_info *info);
+
+// MAP PRINT
 void	print_map(t_info *info, char key);
+void	put_elem(t_info *info, int i, int j);
 void	put_player(t_info *info, int i, int j, char key);
+void	put_img(t_info *info, void *img_ptr, int j, int i);
+
+// KEY HOOKS
 int		key_hooks(int key_code, t_info *info);
 void    w_press(t_info *info);
 void    a_press(t_info *info);

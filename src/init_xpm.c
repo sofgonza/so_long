@@ -20,7 +20,6 @@ int init_mlx(t_info *info)
 	save_xpm(info);
 	print_map(info, 'w');
 	mlx_key_hook(info->mlx_win, key_hooks, info);
-	//mlx_loop_hook(info->mlx, &loop_hook, &info);
 	mlx_loop(info->mlx);
     return (0);
 }
@@ -29,6 +28,7 @@ void	save_xpm(t_info *info)
 {
 	info->minfo.walls = init_xpm(info, "desktopb.xpm");
 	info->minfo.ground = init_xpm(info, "floor.xpm");
+	info->minfo.noexit = init_xpm(info, "stapler.xpm");
 	info->minfo.exit = init_xpm(info, "stapler.xpm");
 	info->minfo.coins = init_xpm(info, "paper.xpm");
 	info->minfo.playerw = init_xpm(info, "dwight.xpm");
@@ -42,7 +42,7 @@ void	*init_xpm(t_info *info, char *str)
 	char	*route;
 	void	*img;
 
-	route = ft_strjoin("./xpm/", str);
+	route = ft_strjoin(XPM_ROUTE, str);
 	img = mlx_xpm_file_to_image(info->mlx, route, &info->img_width, &info->img_height);
 	if (!img)
 		ft_error("Failed to load XPM files");

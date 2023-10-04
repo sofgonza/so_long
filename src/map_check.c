@@ -27,7 +27,7 @@ int	check_map(char *file, t_info *info)
 	close_map(info);
 	map_chars(info);
 	map_parce(info);
-	test_print_map(info->minfo.map);
+	//test_print_map(info->minfo.map);
 	return (0);
 }
 
@@ -47,9 +47,7 @@ int	save_map(int fd, t_info *info)
 			break ;
 		}
 		if (line[0] == '\n')
-		{
 			ft_error("Invalid map");
-		}
 		mapstr = gnl_strjoin(mapstr, line);
 		free(line);
 	}
