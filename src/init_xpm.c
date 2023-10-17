@@ -28,15 +28,15 @@ int	init_mlx(t_solong *info)
 
 void	save_xpm(t_solong *info)
 {
-	info->mlxinfo.walls = init_xpm(info, "desktopb.xpm");
-	info->mlxinfo.ground = init_xpm(info, "floor.xpm");
-	info->mlxinfo.noexit = init_xpm(info, "stapler.xpm");
-	info->mlxinfo.exit = init_xpm(info, "stapler.xpm");
+	info->mlxinfo.walls = init_xpm(info, "drawerb.xpm");
+	info->mlxinfo.ground = init_xpm(info, "floorc.xpm");
+	info->mlxinfo.noexit = init_xpm(info, "desktopc.xpm");
+	info->mlxinfo.exit = init_xpm(info, "desktopc.xpm");
 	info->mlxinfo.coins = init_xpm(info, "paper.xpm");
-	info->mlxinfo.playerw = init_xpm(info, "dwight.xpm");
-	info->mlxinfo.playera = init_xpm(info, "dwight.xpm");
-	info->mlxinfo.players = init_xpm(info, "dwight.xpm");
-	info->mlxinfo.playerd = init_xpm(info, "dwight.xpm");
+	info->mlxinfo.playerw = init_xpm(info, "dwighta.xpm");
+	info->mlxinfo.playera = init_xpm(info, "dwighta.xpm");
+	info->mlxinfo.players = init_xpm(info, "dwightd.xpm");
+	info->mlxinfo.playerd = init_xpm(info, "dwightd.xpm");
 }
 
 void	*init_xpm(t_solong *info, char *str)
