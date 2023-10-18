@@ -69,13 +69,13 @@ int	map_parce(t_solong *info)
 	if (!valid_path(info->minfo.map_cpy))
 	{
 		str_free(info->minfo.map_cpy);
-		ft_error("invalid path\n");
+		ft_error("Error\nInvalid path\n");
 	}
 	find_exit(info, info->minfo.map_cpy);
 	if (!exit_path(info->minfo.map_cpy, info->einfo.y, info->einfo.x))
 	{
 		str_free(info->minfo.map_cpy);
-		ft_error("invalid path\n");
+		ft_error("Error\nInvalid path\n");
 	}
 	str_free(info->minfo.map_cpy);
 	return (0);

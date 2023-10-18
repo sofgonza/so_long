@@ -66,17 +66,17 @@ int	check_chars(char c, t_solong *info)
 	else if (c == '0')
 		info->ground++;
 	else
-		ft_error("invalid chars in map");
+		ft_error("Error\nInvalid chars in mapfile");
 	return (0);
 }
 
 int	count_chars(t_solong *info)
 {
 	if (info->coins < 1)
-		ft_error("not enough collectibles\n");
+		ft_error("Error\nNot enough collectibles\n");
 	else if (info->player != 1)
-		ft_error("start point not given\n");
+		ft_error("Error\nStart point not given\n");
 	else if (info->exit != 1)
-		ft_error("no exit\n");
+		ft_error("Error\nNo exit\n");
 	return (0);
 }

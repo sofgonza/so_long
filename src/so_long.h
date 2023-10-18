@@ -109,7 +109,6 @@ void	str_free(char **str);
 // UTILS
 void	init_vars(t_solong *info);
 void	ft_error(char *str);
-// void	test_print_map(char **map);
 
 // INICIALIZAR XPM
 int		init_mlx(t_solong *info);

@@ -42,7 +42,7 @@ void	find_player(t_solong *info, char **map)
 	}
 }
 
-// ubicar posición slaida
+// ubicar posición salida
 void	find_exit(t_solong *info, char **map)
 {
 	info->einfo.y = 0;

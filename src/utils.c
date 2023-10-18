@@ -28,21 +28,21 @@ void	ft_error(char *str)
 	exit (0);
 }
 
-void	test_print_map(char **map)
-{
-	int	i;
-	int	j;
+// void	test_print_map(char **map)
+// {
+// 	int	i;
+// 	int	j;
 
-	i = 0;
-	while (map[i])
-	{
-		j = 0;
-		while (map[i][j])
-		{
-			ft_printf("%c", map[i][j]);
-			++j;
-		}
-		ft_printf("\n");
-		++i;
-	}
-}
+// 	i = 0;
+// 	while (map[i])
+// 	{
+// 		j = 0;
+// 		while (map[i][j])
+// 		{
+// 			ft_printf("%c", map[i][j]);
+// 			++j;
+// 		}
+// 		ft_printf("\n");
+// 		++i;
+// 	}
+// }

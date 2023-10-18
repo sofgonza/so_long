@@ -20,7 +20,7 @@ int	check_map(char *file, t_solong *info)
 	if (fd == -1)
 	{
 		close(fd);
-		ft_error("invalid file");
+		ft_error("Error\nInvalid file");
 	}
 	save_map(fd, info);
 	rec_map(info);
@@ -46,12 +46,12 @@ int	save_map(int fd, t_solong *info)
 			break ;
 		}
 		if (line[0] == '\n')
-			ft_error("Invalid map");
+			ft_error("Error\nInvalid map");
 		mapstr = gnl_strjoin(mapstr, line);
 		free(line);
 	}
 	if (!mapstr)
-		ft_error("empty file");
+		ft_error("Error\nEmpty file");
 	info->minfo.map = ft_split(mapstr, '\n');
 	info->minfo.map_cpy = ft_split(mapstr, '\n');
 	free(mapstr);
@@ -71,7 +71,7 @@ int	rec_map(t_solong *info)
 		len2 = ft_strlen(info->minfo.map[i]);
 		if (info->minfo.map_l != len2)
 		{
-			ft_error("insert a rectangular map");
+			ft_error("Error\nInsert a rectangular map");
 			return (0);
 		}
 		info->minfo.map_l = len2;
@@ -95,11 +95,11 @@ int	close_map(t_solong *info)
 		while (i <= len && (j == 0 || !(info->minfo.map[j + 1])))
 		{
 			if (info->minfo.map[j][i] != '1')
-				ft_error("map not closed by top/down walls\n");
+				ft_error("Error\nMap not closed by walls\n");
 			++i;
 		}
 		if (info->minfo.map[j][0] != '1' || info->minfo.map[j][len] != '1')
-			ft_error("map not closed by lateral walls\n");
+			ft_error("Error\nMap not closed by walls\n");
 		++j;
 	}
 	return (0);

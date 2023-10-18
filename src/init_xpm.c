@@ -48,7 +48,7 @@ void	*init_xpm(t_solong *info, char *str)
 	img = mlx_xpm_file_to_image(info->mlxinfo.mlx, route,
 			&info->mlxinfo.img_width, &info->mlxinfo.img_height);
 	if (!img)
-		ft_error("Failed to load XPM files");
+		ft_error("Error\nFailed to load XPM files");
 	free(route);
 	return (img);
 }
