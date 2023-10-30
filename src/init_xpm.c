@@ -31,8 +31,8 @@ void	save_xpm(t_solong *info)
 	info->mlxinfo.walls = init_xpm(info, "plants.xpm");
 	info->mlxinfo.ground = init_xpm(info, "lake.xpm");
 	info->mlxinfo.noexit = init_xpm(info, "plants.xpm");
-	info->mlxinfo.exit = init_xpm(info, "mateb.xpm");
-	info->mlxinfo.coins = init_xpm(info, "medialuna.xpm");
+	info->mlxinfo.exit = init_xpm(info, "yerba.xpm");
+	info->mlxinfo.coins = init_xpm(info, "mate.xpm");
 	info->mlxinfo.playerw = init_xpm(info, "carpinchow.xpm");
 	info->mlxinfo.playera = init_xpm(info, "carpinchoa.xpm");
 	info->mlxinfo.players = init_xpm(info, "carpinchos.xpm");

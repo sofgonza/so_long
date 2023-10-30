@@ -51,12 +51,12 @@ void	put_elem(t_solong *info, int i, int j)
 
 void	put_player(t_solong *info, int i, int j, char key)
 {
-	if (key == 'w')
+	if (key == 's')
+		put_img(info, info->mlxinfo.players, j, i);
+	else if (key == 'w')
 		put_img(info, info->mlxinfo.playerw, j, i);
 	else if (key == 'a')
 		put_img(info, info->mlxinfo.playera, j, i);
-	else if (key == 's')
-		put_img(info, info->mlxinfo.players, j, i);
 	else if (key == 'd')
 		put_img(info, info->mlxinfo.playerd, j, i);
 }
