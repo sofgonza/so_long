@@ -15,8 +15,7 @@ NAME = so_long
 RM = rm -f
 
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra 
-DEBUG = -g3 -fsanitize=address
+CFLAGS = -Wall -Werror -Wextra -g3 -fsanitize=address
 MLX_FLAGS = -framework OpenGL -framework AppKit
 
 LIBFT = ./libft/libft.a

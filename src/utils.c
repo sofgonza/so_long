@@ -20,6 +20,14 @@ void	init_vars(t_solong *info)
 	info->exit = 0;
 	info->walls = 0;
 	info->ground = 0;
+	info->minfo.map_cpy = NULL;
+	info->minfo.map_l = 0;
+	info->minfo.map_h = 0;
+	info->einfo.x = 0;
+	info->einfo.y = 0;
+	info->pinfo.x = 0;
+	info->pinfo.y = 0;
+	info->pinfo.mov = 0;
 }
 
 void	ft_error(char *str)
