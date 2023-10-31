@@ -12,6 +12,7 @@
 
 #include "so_long.h"
 
+// movimiento en base a tecla ingresada
 int	key_hooks(int key_code, t_solong *info)
 {
 	if (key_code == ESC_KEY)

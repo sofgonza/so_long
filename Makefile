@@ -52,7 +52,8 @@ make_mlx:
 	@make all -C ./mlx
 
 $(NAME): $(OBJS) $(GNLOBJS)
-	$(CC) $(CFLAGS) $(GNLOBJS) $(OBJS) -I $(LIB) $(LIBFT) $(MLX) $(MLX_FLAGS) -o $(NAME) $(LIBFT) $(PRINTF)
+	$(CC) $(CFLAGS) $(GNLOBJS) $(OBJS) -I $(LIB) $(LIBFT) $(MLX) \
+	$(MLX_FLAGS) -o $(NAME) $(LIBFT) $(PRINTF)
 
 clean:
 	$(RM) $(OBJS) $(GNLOBJS)

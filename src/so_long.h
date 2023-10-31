@@ -35,6 +35,7 @@
 # define PXL_SIZE		96
 # define XPM_ROUTE		"./xpm/"
 
+// info jugador
 typedef struct s_player
 {
 	int	x;
@@ -42,12 +43,14 @@ typedef struct s_player
 	int	mov;
 }	t_player;
 
+// info de salida
 typedef struct s_exit
 {
 	int	x;
 	int	y;
 }	t_exit;
 
+// mapa
 typedef struct s_map
 {
 	char	**map;
@@ -56,6 +59,7 @@ typedef struct s_map
 	int		map_h;
 }	t_map;
 
+// imagenes mlx
 typedef struct s_mlx
 {
 	void	*mlx;
@@ -73,6 +77,7 @@ typedef struct s_mlx
 	void	*playerd;
 }	t_mlx;
 
+// estructura principal
 typedef struct s_solong
 {
 	t_player	pinfo;

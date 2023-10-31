@@ -12,6 +12,7 @@
 
 #include "so_long.h"
 
+// iniciar variables
 void	init_vars(t_solong *info)
 {
 	info->minfo.map = NULL;
@@ -29,13 +30,14 @@ void	init_vars(t_solong *info)
 	info->pinfo.y = 0;
 	info->pinfo.mov = 0;
 }
-
+// liberar errores
 void	ft_error(char *str)
 {
 	ft_putstr_fd(str, 2);
 	exit (0);
 }
 
+// printeo de mapa en terminal
 // void	test_print_map(char **map)
 // {
 // 	int	i;

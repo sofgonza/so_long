@@ -28,7 +28,7 @@ int	main(int argc, char *argv[])
 	}
 	else
 	{
-		ft_printf("Error\nInvalid map file");
+		ft_printf("Error\nInvalid map file\n");
 		exit(1);
 	}
 	return (0);

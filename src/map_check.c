@@ -20,7 +20,7 @@ int	check_map(char *file, t_solong *info)
 	if (fd == -1)
 	{
 		close(fd);
-		ft_error("Error\nInvalid file");
+		ft_error("Error\nInvalid file\n");
 	}
 	save_map(fd, info);
 	rec_map(info);
@@ -30,6 +30,7 @@ int	check_map(char *file, t_solong *info)
 	return (0);
 }
 
+// guardado del mapa con gnl
 int	save_map(int fd, t_solong *info)
 {
 	char	*line;
@@ -46,18 +47,19 @@ int	save_map(int fd, t_solong *info)
 			break ;
 		}
 		if (line[0] == '\n')
-			ft_error("Error\nInvalid map");
+			ft_error("Error\nInvalid map\n");
 		mapstr = gnl_strjoin(mapstr, line);
 		free(line);
 	}
 	if (!mapstr)
-		ft_error("Error\nEmpty file");
+		ft_error("Error\nEmpty file\n");
 	info->minfo.map = ft_split(mapstr, '\n');
 	info->minfo.map_cpy = ft_split(mapstr, '\n');
 	free(mapstr);
 	return (0);
 }
 
+// check de mapa rectangular
 int	rec_map(t_solong *info)
 {
 	int	len2;
@@ -71,7 +73,7 @@ int	rec_map(t_solong *info)
 		len2 = ft_strlen(info->minfo.map[i]);
 		if (info->minfo.map_l != len2)
 		{
-			ft_error("Error\nInsert a rectangular map");
+			ft_error("Error\nInsert a rectangular map\n");
 			return (0);
 		}
 		info->minfo.map_l = len2;
@@ -81,6 +83,7 @@ int	rec_map(t_solong *info)
 	return (0);
 }
 
+// check mapa cerrado
 int	close_map(t_solong *info)
 {
 	int	len;

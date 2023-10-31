@@ -12,6 +12,7 @@
 
 #include "so_long.h"
 
+// check .ber
 int	check_ber(char	*argv)
 {
 	int		i;
@@ -33,6 +34,7 @@ int	check_ber(char	*argv)
 	return (1);
 }
 
+// check caracteres del mapa
 int	map_chars(t_solong *info)
 {
 	int	j;
@@ -66,7 +68,7 @@ int	check_chars(char c, t_solong *info)
 	else if (c == '0')
 		info->ground++;
 	else
-		ft_error("Error\nInvalid chars in mapfile");
+		ft_error("Error\nInvalid chars in mapfile\n");
 	return (0);
 }
 
