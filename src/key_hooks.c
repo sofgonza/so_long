@@ -13,7 +13,7 @@
 #include "so_long.h"
 
 // movimiento en base a tecla ingresada
-int	key_hooks(int key_code, t_solong *info)
+int	key_hooks(int key_code, t_info *info)
 {
 	if (key_code == ESC_KEY)
 	{
@@ -31,7 +31,7 @@ int	key_hooks(int key_code, t_solong *info)
 	return (0);
 }
 
-void	w_press(t_solong *info)
+void	w_press(t_info *info)
 {
 	if ((info->minfo.map[info->pinfo.y - 1][info->pinfo.x]) == 'C')
 		info->coins--;
@@ -50,7 +50,7 @@ void	w_press(t_solong *info)
 	}
 }
 
-void	s_press(t_solong *info)
+void	s_press(t_info *info)
 {
 	if ((info->minfo.map[info->pinfo.y + 1][info->pinfo.x]) == 'C')
 		info->coins--;
@@ -69,7 +69,7 @@ void	s_press(t_solong *info)
 	}
 }
 
-void	a_press(t_solong *info)
+void	a_press(t_info *info)
 {
 	if ((info->minfo.map[info->pinfo.y][info->pinfo.x - 1]) == 'C')
 		info->coins--;
@@ -88,7 +88,7 @@ void	a_press(t_solong *info)
 	}
 }
 
-void	d_press(t_solong *info)
+void	d_press(t_info *info)
 {
 	if ((info->minfo.map[info->pinfo.y][info->pinfo.x + 1]) == 'C')
 		info->coins--;

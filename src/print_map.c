@@ -13,7 +13,7 @@
 #include "so_long.h"
 
 // recorre el mapa y va llamando para imprimir posición por posición
-void	print_map(t_solong *info, char key)
+void	print_map(t_info *info, char key)
 {
 	int	i;
 	int	j;
@@ -33,7 +33,7 @@ void	print_map(t_solong *info, char key)
 	}
 }
 
-void	put_elem(t_solong *info, int i, int j)
+void	put_elem(t_info *info, int i, int j)
 {
 	put_img(info, info->mlxinfo.ground, j, i);
 	if (info->minfo.map[i][j] == '1')
@@ -51,7 +51,7 @@ void	put_elem(t_solong *info, int i, int j)
 }
 
 // dirección de mirada del jugador dependiendo hacia donde se mueve
-void	put_player(t_solong *info, int i, int j, char key)
+void	put_player(t_info *info, int i, int j, char key)
 {
 	if (key == 's')
 		put_img(info, info->mlxinfo.players, j, i);
@@ -63,7 +63,7 @@ void	put_player(t_solong *info, int i, int j, char key)
 		put_img(info, info->mlxinfo.playerd, j, i);
 }
 
-void	put_img(t_solong *info, void *img_ptr, int j, int i)
+void	put_img(t_info *info, void *img_ptr, int j, int i)
 {
 	mlx_put_image_to_window(info->mlxinfo.mlx, info->mlxinfo.win, img_ptr,
 		j * PXL_SIZE, i * PXL_SIZE);

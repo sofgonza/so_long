@@ -78,7 +78,7 @@ typedef struct s_mlx
 }	t_mlx;
 
 // estructura principal
-typedef struct s_solong
+typedef struct s_info
 {
 	t_player	pinfo;
 	t_exit		einfo;
@@ -89,7 +89,7 @@ typedef struct s_solong
 	int			exit;
 	int			walls;
 	int			ground;
-}	t_solong;
+}	t_info;
 
 // MAP CHECK
 int		check_ber(char	*argv);

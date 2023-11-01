@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-int	check_map(char *file, t_solong *info)
+int	check_map(char *file, t_info *info)
 {
 	int	fd;
 
@@ -31,7 +31,7 @@ int	check_map(char *file, t_solong *info)
 }
 
 // guardado del mapa con gnl
-int	save_map(int fd, t_solong *info)
+int	save_map(int fd, t_info *info)
 {
 	char	*line;
 	char	*mapstr;
@@ -60,7 +60,7 @@ int	save_map(int fd, t_solong *info)
 }
 
 // check de mapa rectangular
-int	rec_map(t_solong *info)
+int	rec_map(t_info *info)
 {
 	int	len2;
 	int	i;
@@ -84,7 +84,7 @@ int	rec_map(t_solong *info)
 }
 
 // check mapa cerrado
-int	close_map(t_solong *info)
+int	close_map(t_info *info)
 {
 	int	len;
 	int	i;

@@ -13,7 +13,7 @@
 #include "so_long.h"
 
 // iniciar variables
-void	init_vars(t_solong *info)
+void	init_vars(t_info *info)
 {
 	info->minfo.map = NULL;
 	info->player = 0;

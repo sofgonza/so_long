@@ -62,7 +62,7 @@ int	exit_path(char **map, int y, int x)
 }
 
 // función de parceo general del mapa
-int	map_parce(t_solong *info)
+int	map_parce(t_info *info)
 {
 	find_player(info, info->minfo.map_cpy);
 	info->minfo.map_cpy = chech_path(info->minfo.map_cpy,

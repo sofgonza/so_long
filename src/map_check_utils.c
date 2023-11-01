@@ -35,7 +35,7 @@ int	check_ber(char	*argv)
 }
 
 // check caracteres del mapa
-int	map_chars(t_solong *info)
+int	map_chars(t_info *info)
 {
 	int	j;
 	int	i;
@@ -55,7 +55,7 @@ int	map_chars(t_solong *info)
 	return (0);
 }
 
-int	check_chars(char c, t_solong *info)
+int	check_chars(char c, t_info *info)
 {
 	if (c == 'C')
 		info->coins++;
@@ -72,7 +72,7 @@ int	check_chars(char c, t_solong *info)
 	return (0);
 }
 
-int	count_chars(t_solong *info)
+int	count_chars(t_info *info)
 {
 	if (info->coins < 1)
 		ft_error("Error\nNot enough collectibles\n");

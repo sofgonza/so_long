@@ -27,7 +27,7 @@ void	str_free(char **str)
 }
 
 // ubicar posición jugador
-void	find_player(t_solong *info, char **map)
+void	find_player(t_info *info, char **map)
 {
 	info->pinfo.y = 0;
 	while (map[info->pinfo.y])
@@ -43,7 +43,7 @@ void	find_player(t_solong *info, char **map)
 }
 
 // ubicar posición salida
-void	find_exit(t_solong *info, char **map)
+void	find_exit(t_info *info, char **map)
 {
 	info->einfo.y = 0;
 	while (map[info->einfo.y])

@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-int	init_mlx(t_solong *info)
+int	init_mlx(t_info *info)
 {
 	info->mlxinfo.mlx = mlx_init();
 	info->mlxinfo.win = mlx_new_window(info->mlxinfo.mlx,
@@ -26,7 +26,7 @@ int	init_mlx(t_solong *info)
 	return (0);
 }
 
-void	save_xpm(t_solong *info)
+void	save_xpm(t_info *info)
 {
 	info->mlxinfo.walls = init_xpm(info, "plants.xpm");
 	info->mlxinfo.ground = init_xpm(info, "lake.xpm");
@@ -39,7 +39,7 @@ void	save_xpm(t_solong *info)
 	info->mlxinfo.playerd = init_xpm(info, "carpinchod.xpm");
 }
 
-void	*init_xpm(t_solong *info, char *str)
+void	*init_xpm(t_info *info, char *str)
 {
 	char	*route;
 	void	*img;
@@ -53,7 +53,7 @@ void	*init_xpm(t_solong *info, char *str)
 	return (img);
 }
 
-int	red_cross(t_solong *info)
+int	red_cross(t_info *info)
 {
 	mlx_destroy_window(info->mlxinfo.mlx, info->mlxinfo.win);
 	exit (0);
