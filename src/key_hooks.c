@@ -10,9 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../includes/so_long.h"
 
-// movimiento en base a tecla ingresada
 int	key_hooks(int key_code, t_info *info)
 {
 	if (key_code == ESC_KEY)
@@ -37,7 +36,7 @@ void	w_press(t_info *info)
 		info->coins--;
 	if ((info->minfo.map[info->pinfo.y - 1][info->pinfo.x]) == 'E'
 			&& info->coins == 0)
-		exit(0);
+		ft_exit("Congrats! you are ready to prime a new mate\n");
 	if ((info->minfo.map[info->pinfo.y - 1][info->pinfo.x]) != '1'
 			&& (info->minfo.map[info->pinfo.y - 1][info->pinfo.x]) != 'E')
 	{
@@ -56,7 +55,7 @@ void	s_press(t_info *info)
 		info->coins--;
 	if ((info->minfo.map[info->pinfo.y + 1][info->pinfo.x]) == 'E'
 			&& info->coins == 0)
-		exit(0);
+		ft_exit("Congrats! you are ready to prime a new mate\n");
 	if ((info->minfo.map[info->pinfo.y + 1][info->pinfo.x]) != '1'
 		&& (info->minfo.map[info->pinfo.y + 1][info->pinfo.x]) != 'E')
 	{
@@ -75,7 +74,7 @@ void	a_press(t_info *info)
 		info->coins--;
 	if ((info->minfo.map[info->pinfo.y][info->pinfo.x - 1]) == 'E'
 		&& info->coins == 0)
-		exit(0);
+		ft_exit("Congrats! you are ready to prime a new mate\n");
 	if ((info->minfo.map[info->pinfo.y][info->pinfo.x - 1]) != '1'
 		&& (info->minfo.map[info->pinfo.y][info->pinfo.x - 1]) != 'E')
 	{
@@ -94,7 +93,7 @@ void	d_press(t_info *info)
 		info->coins--;
 	if ((info->minfo.map[info->pinfo.y][info->pinfo.x + 1]) == 'E'
 		&& info->coins == 0)
-		exit(0);
+		ft_exit("Congrats! you are ready to prime a new mate\n");
 	if ((info->minfo.map[info->pinfo.y][info->pinfo.x + 1]) != '1'
 		&& (info->minfo.map[info->pinfo.y][info->pinfo.x + 1]) != 'E')
 	{

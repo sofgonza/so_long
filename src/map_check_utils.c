@@ -10,9 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../includes/so_long.h"
 
-// check .ber
 int	check_ber(char	*argv)
 {
 	int		i;
@@ -34,7 +33,6 @@ int	check_ber(char	*argv)
 	return (1);
 }
 
-// check caracteres del mapa
 int	map_chars(t_info *info)
 {
 	int	j;
@@ -77,8 +75,8 @@ int	count_chars(t_info *info)
 	if (info->coins < 1)
 		ft_error("Error\nNot enough collectibles\n");
 	else if (info->player != 1)
-		ft_error("Error\nStart point not given\n");
+		ft_error("Error\nStart point not given / More than one Player\n");
 	else if (info->exit != 1)
-		ft_error("Error\nNo exit\n");
+		ft_error("Error\nNo Exit / More than one Exit\n");
 	return (0);
 }

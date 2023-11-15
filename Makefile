@@ -15,13 +15,13 @@ NAME = so_long
 RM = rm -f
 
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra -g3 -fsanitize=address
+CFLAGS = -Wall -Werror -Wextra
 MLX_FLAGS = -framework OpenGL -framework AppKit
 
 LIBFT = ./libft/libft.a
 PRINTF = ./printf/libftprintf.a
 MLX = ./mlx/libmlx.a
-LIB = ./src/so_long.h
+LIB = ./includes/so_long.h
 SRC_PATH = ./src/
 
 GNL = get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
@@ -30,7 +30,7 @@ GNLOBJS = $(GNL:.c=.o)
 SRC = so_long.c \
 		map_check.c \
 		map_check_utils.c \
-		utils.c \
+		so_long_utils.c \
 		parce.c \
 		parce_utils.c \
 		print_map.c \
@@ -52,18 +52,19 @@ make_mlx:
 	@make all -C ./mlx
 
 $(NAME): $(OBJS) $(GNLOBJS)
-	$(CC) $(CFLAGS) $(GNLOBJS) $(OBJS) -I $(LIB) $(LIBFT) $(MLX) \
-	$(MLX_FLAGS) -o $(NAME) $(LIBFT) $(PRINTF)
+	$(CC) $(CFLAGS) $(GNLOBJS) $(OBJS) -I $(LIB) $(LIBFT) $(PRINTF) $(MLX) $(MLX_FLAGS) -o $(NAME)
 
 clean:
 	$(RM) $(OBJS) $(GNLOBJS)
 	make clean -C ./libft
 	make clean -C ./printf
+	make clean -C ./mlx
 
 fclean: clean
 	$(RM) $(NAME)
 	make fclean -C ./libft
 	make fclean -C ./printf
+	make clean -C ./mlx
 
 re: fclean all
 

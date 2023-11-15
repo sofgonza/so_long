@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../includes/so_long.h"
 
 int	main(int argc, char *argv[])
 {
@@ -27,9 +27,6 @@ int	main(int argc, char *argv[])
 		free(info);
 	}
 	else
-	{
-		ft_printf("Error\nInvalid map file\n");
-		exit(1);
-	}
+		ft_error("Error\nInvalid map file\n");
 	return (0);
 }

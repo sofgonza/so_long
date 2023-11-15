@@ -10,9 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../includes/so_long.h"
 
-// liberar mapa
 void	str_free(char **str)
 {
 	unsigned int	j;
@@ -26,7 +25,6 @@ void	str_free(char **str)
 	free (str);
 }
 
-// ubicar posición jugador
 void	find_player(t_info *info, char **map)
 {
 	info->pinfo.y = 0;
@@ -42,7 +40,6 @@ void	find_player(t_info *info, char **map)
 	}
 }
 
-// ubicar posición salida
 void	find_exit(t_info *info, char **map)
 {
 	info->einfo.y = 0;

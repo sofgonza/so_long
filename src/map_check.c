@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../includes/so_long.h"
 
 int	check_map(char *file, t_info *info)
 {
@@ -24,13 +24,17 @@ int	check_map(char *file, t_info *info)
 	}
 	save_map(fd, info);
 	rec_map(info);
+	if (info->minfo.map_l > 26 || info->minfo.map_h > 13)
+	{
+		ft_error("Error\nInsert a smaller map\n");
+		return (0);
+	}
 	close_map(info);
 	map_chars(info);
 	map_parce(info);
 	return (0);
 }
 
-// guardado del mapa con gnl
 int	save_map(int fd, t_info *info)
 {
 	char	*line;
@@ -59,7 +63,6 @@ int	save_map(int fd, t_info *info)
 	return (0);
 }
 
-// check de mapa rectangular
 int	rec_map(t_info *info)
 {
 	int	len2;
@@ -83,7 +86,6 @@ int	rec_map(t_info *info)
 	return (0);
 }
 
-// check mapa cerrado
 int	close_map(t_info *info)
 {
 	int	len;

@@ -10,9 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../includes/so_long.h"
 
-// recorre el mapa y va llamando para imprimir posición por posición
 void	print_map(t_info *info, char key)
 {
 	int	i;
@@ -50,7 +49,6 @@ void	put_elem(t_info *info, int i, int j)
 		put_img(info, info->mlxinfo.ground, j, i);
 }
 
-// dirección de mirada del jugador dependiendo hacia donde se mueve
 void	put_player(t_info *info, int i, int j, char key)
 {
 	if (key == 's')

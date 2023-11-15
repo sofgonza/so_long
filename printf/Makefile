@@ -14,7 +14,7 @@ LIB = ar -rcs
 RM = rm -f
 
 CC = gcc
-CCFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra
 
 NAME = libftprintf.a
 SRC = ft_printf.c ft_putchar.c ft_putstr.c	ft_putptr.c	ft_putnbr.c	ft_puthex.c

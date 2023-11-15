@@ -10,17 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../includes/so_long.h"
 
-// iniciar variables
 void	init_vars(t_info *info)
 {
-	info->minfo.map = NULL;
 	info->player = 0;
 	info->coins = 0;
 	info->exit = 0;
 	info->walls = 0;
 	info->ground = 0;
+	info->minfo.map = NULL;
 	info->minfo.map_cpy = NULL;
 	info->minfo.map_l = 0;
 	info->minfo.map_h = 0;
@@ -30,8 +29,14 @@ void	init_vars(t_info *info)
 	info->pinfo.y = 0;
 	info->pinfo.mov = 0;
 }
-// liberar errores
+
 void	ft_error(char *str)
+{
+	ft_putstr_fd(str, 2);
+	exit (1);
+}
+
+void	ft_exit(char *str)
 {
 	ft_putstr_fd(str, 2);
 	exit (0);

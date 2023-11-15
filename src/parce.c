@@ -10,9 +10,28 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../includes/so_long.h"
 
-// reemplazar '0' y 'C' por ' '
+int	map_parce(t_info *info)
+{
+	find_player(info, info->minfo.map_cpy);
+	info->minfo.map_cpy = chech_path(info->minfo.map_cpy,
+			info->pinfo.y, info->pinfo.x);
+	if (!valid_path(info->minfo.map_cpy))
+	{
+		str_free(info->minfo.map_cpy);
+		ft_error("Error\nInvalid path\n");
+	}
+	find_exit(info, info->minfo.map_cpy);
+	if (!exit_path(info->minfo.map_cpy, info->einfo.y, info->einfo.x))
+	{
+		str_free(info->minfo.map_cpy);
+		ft_error("Error\nInvalid path\n");
+	}
+	str_free(info->minfo.map_cpy);
+	return (0);
+}
+
 char	**chech_path(char **map, int y, int x)
 {
 	map[y][x] = ' ';
@@ -31,7 +50,6 @@ char	**chech_path(char **map, int y, int x)
 	return (map);
 }
 
-// controlar que no haya 'C' en el mapa
 int	valid_path(char **map)
 {
 	int	y;
@@ -52,32 +70,10 @@ int	valid_path(char **map)
 	return (1);
 }
 
-// checkear en puntos cardinales al rededor de 'E' q alguno es ' '
 int	exit_path(char **map, int y, int x)
 {
 	if (map[y - 1][x] == ' ' || map[y + 1][x] == ' '
 		|| map[y][x - 1] == ' ' || map[y][x + 1] == ' ')
 		return (1);
-	return (0);
-}
-
-// función de parceo general del mapa
-int	map_parce(t_info *info)
-{
-	find_player(info, info->minfo.map_cpy);
-	info->minfo.map_cpy = chech_path(info->minfo.map_cpy,
-			info->pinfo.y, info->pinfo.x);
-	if (!valid_path(info->minfo.map_cpy))
-	{
-		str_free(info->minfo.map_cpy);
-		ft_error("Error\nInvalid path\n");
-	}
-	find_exit(info, info->minfo.map_cpy);
-	if (!exit_path(info->minfo.map_cpy, info->einfo.y, info->einfo.x))
-	{
-		str_free(info->minfo.map_cpy);
-		ft_error("Error\nInvalid path\n");
-	}
-	str_free(info->minfo.map_cpy);
 	return (0);
 }

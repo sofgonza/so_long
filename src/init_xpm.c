@@ -10,14 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../includes/so_long.h"
 
 int	init_mlx(t_info *info)
 {
 	info->mlxinfo.mlx = mlx_init();
+	if (!(info->mlxinfo.mlx))
+		ft_error("Failed to load MLX");
 	info->mlxinfo.win = mlx_new_window(info->mlxinfo.mlx,
 			(info->minfo.map_l * PXL_SIZE),
 			((info->minfo.map_h + 1) * PXL_SIZE), "so_long");
+	if (!(info->mlxinfo.win))
+		ft_error("Failed to load window");
 	mlx_hook(info->mlxinfo.win, 17, 0, red_cross, info);
 	save_xpm(info);
 	print_map(info, 's');

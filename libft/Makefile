@@ -14,7 +14,7 @@ LIB = ar -rcs
 RM = rm -f
 
 CC = gcc
-CCFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra
 
 NAME = libft.a
 SRC = \
