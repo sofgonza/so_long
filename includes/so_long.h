@@ -127,6 +127,7 @@ void	print_map(t_info *info, char key);
 void	put_elem(t_info *info, int i, int j);
 void	put_player(t_info *info, int i, int j, char key);
 void	put_img(t_info *info, void *img_ptr, int j, int i);
+void	moves_on_frame(t_info *info);
 
 // KEY HOOKS
 int		key_hooks(int key_code, t_info *info);
