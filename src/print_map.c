@@ -41,6 +41,7 @@ void	print_map(t_info *info, char key)
 		}
 		++i;
 	}
+	moves_on_frame(t_info *info);
 }
 
 void	put_elem(t_info *info, int i, int j)
