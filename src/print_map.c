@@ -28,6 +28,7 @@ void	print_map(t_info *info, char key)
 	int	j;
 
 	i = 0;
+	moves_on_frame(t_info *info);
 	while (info->minfo.map[i])
 	{
 		j = 0;
