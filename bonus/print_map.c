@@ -12,6 +12,30 @@
 
 #include "../includes/so_long.h"
 
+void	moves_on_frame(t_info *info)
+{
+	char	*moves;
+	int		y;
+	int		x;
+
+	y = 5;
+	x = 5;
+	while(y < 25)
+	{
+		while(x < 85)
+		{
+			mlx_pixel_put(info->mlxinfo.mlx, info->mlxinfo.win, x, y, 0x412f21);
+			++x;
+		}
+		x = 5;
+		++y;
+	}
+	moves = ft_itoa(info->pinfo.mov);
+	mlx_string_put(info->mlxinfo.mlx, info->mlxinfo.win, 10, 20, 0xFFFFFF, "Moves:");
+	mlx_string_put(info->mlxinfo.mlx, info->mlxinfo.win, 65, 20, 0xFFFFFF, moves);
+	free(moves);
+}
+
 void	print_map(t_info *info, char key)
 {
 	int	i;
@@ -30,6 +54,7 @@ void	print_map(t_info *info, char key)
 		}
 		++i;
 	}
+	moves_on_frame(info);
 }
 
 void	put_elem(t_info *info, int i, int j)
